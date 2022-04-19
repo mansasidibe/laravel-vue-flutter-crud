@@ -70,6 +70,7 @@ class ProductController extends Controller
     {
         //
         $product->update($request->all());
+        return response()->json(['message' => 'mis à jour avec succès']);
     }
 
     /**
