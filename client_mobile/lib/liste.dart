@@ -10,22 +10,20 @@ class MyWidget extends StatelessWidget {
 }
 Widget dTable() {
   var data = <Data>[
-    Data("varun", "20", "2001"),
-    Data("varun1", "21", "2000"),
-    Data("varun2", "23", "1998"),
-    Data("varun3", "26", "1995"),
+    Data("Samsung", "20000", "2001-12-1"),
+
   ];
   return DataTable(
     
     columns: [
       DataColumn(
-        label: Text("Name"),
+        label: Text("Nom Produit"),
       ),
       DataColumn(
-        label: Text("Age"),
+        label: Text("Prix produit"),
       ),
       DataColumn(
-        label: Text("Year"),
+        label: Text("Ajouté le"),
       ),
       DataColumn(label: FlutterLogo())
     ],
@@ -39,6 +37,8 @@ Widget dTable() {
     }).toList(),
   );
 }
+
+// A MODIFIER
 
 class Data {
   String name;
