@@ -38,6 +38,16 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         //
+        $validate = $this->validate($request, [
+            'product_title' => 'required',
+            'product_price' => 'required',
+        ]);
+
+        if (Product::create($validate)) {
+            return response()->json(['message' => 'cool!'], 200);
+        } else{
+            return response()->json(['message' => 'non'], 400);
+        }
     }
 
     /**
@@ -78,6 +88,7 @@ class ProductController extends Controller
     public function update(Request $request, Product $product)
     {
         //
+        $product->update($request->all());
     }
 
     /**
