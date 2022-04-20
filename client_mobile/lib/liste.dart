@@ -25,24 +25,24 @@ Widget dTable() {
       DataColumn(
         label: Text("Ajouté le"),
       ),
-      DataColumn(label: FlutterLogo())
+      DataColumn(
+        label: Text("Action"),
+      ),
     ],
     rows: data.map((data) {
       return DataRow(cells: [
-        DataCell(Text(data.name)),
-        DataCell(Text(data.age)),
-        DataCell(Text(data.year)),
+        DataCell(Text(data.product_title)),
+        DataCell(Text(data.product_price)),
+        DataCell(Text(data.created_at)),
         DataCell(FlutterLogo())
       ]);
     }).toList(),
   );
 }
 
-// A MODIFIER
-
 class Data {
-  String name;
-  String age;
-  String year;
-  Data(this.name, this.age, this.year);
+  String product_title;
+  String product_price;
+  String created_at;
+  Data(this.product_title, this.product_price, this.created_at);
 }
