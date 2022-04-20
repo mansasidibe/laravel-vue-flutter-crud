@@ -14,7 +14,6 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
         $product = Product::get();
         return response()->json(['produits' => $product], 200);
     }
@@ -28,7 +27,6 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
         $validate = $this->validate($request, [
             'product_title' => 'required',
             'product_price' => 'required',
@@ -49,13 +47,7 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        //
-        if ($product) {
-            return response()->json(['produit' => $product]);
-        } else {
-            return response()->json(['message' => 'le produit n\' existe pas, désolé']);
-        }
-
+        return response()->json(['produit' => $product]);
     }
 
 
@@ -69,8 +61,19 @@ class ProductController extends Controller
     public function update(Request $request, Product $product)
     {
         //
-        $product->update($request->all());
-        return response()->json(['message' => 'mis à jour avec succès']);
+        $this->validate($request, [
+            'product_title' => 'required',
+            'product_price' => 'required',
+        ]);
+
+        $product = new Product();
+        $product->product_title = $request->product_title;
+        $product->product_price = $request->product_price;
+        if ($product->update()) {
+            return response()->json(['message' => 'mis à jour avec succès']);
+        } else {
+            return response()->json(['message' => 'erreur, désolé']);
+        }
     }
 
     /**
@@ -81,7 +84,6 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        //
         $product->delete();
         return response()->json(['message' => 'supprimé avec succès']);
     }
