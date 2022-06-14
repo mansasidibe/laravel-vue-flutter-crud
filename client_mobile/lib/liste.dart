@@ -8,7 +8,7 @@ import 'package:http/http.dart' as http;
 // FETCHONS LES DONNEES DE L'API
 Future<Product> fetchProduit() async {
   final response = await http
-      .get(Uri.parse('http://127.0.0.1/api/produit'));
+      .get(Uri.parse('http://127.0.0.1:8000/api/produit'));
 
   if (response.statusCode == 200) {
     // SI TOUT EST OK, ALORS ON CONVERTI LES DONNEES EN FORMAT JSON.
