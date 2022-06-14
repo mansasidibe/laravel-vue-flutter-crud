@@ -49,7 +49,7 @@ class MyWidget extends StatelessWidget {
   // INITIONS LES PRODUITS AJOUTE A UNE VARIABLE QUE LES RECUPER
   @override
   void initState() {
-    super.initState();
+    // super.initState();
     futureProduct = fetchProduit();
   }
 
